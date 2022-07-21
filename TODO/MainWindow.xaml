@@ -9,9 +9,6 @@
         mc:Ignorable="d" Height="400" Width="350"
         WindowStyle="None" AllowsTransparency="True" KeyDown="Window_KeyDown"
         MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="Resources/todo.ico">
-    <!--<Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>-->
     <Window.Resources>
         <Style TargetType="{x:Type ItemsControl}">
             <Style.Resources>
@@ -22,10 +19,11 @@
                             <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Margin="5,2,2,2" FontSize="18"
-                                   Text="{Binding msg}" TextAlignment="Left" TextWrapping="Wrap"/>
+                                   Text="{Binding Message}" TextAlignment="Left" TextWrapping="Wrap"/>
                         <Button Grid.Column="1" Margin="2,2,5,2" FontSize="12" Content="Done" Height="20"
                                 CommandParameter="{Binding}"
-                                Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.DoneCommand}"/>
+                                Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.DoneCommand}">
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </Style.Resources>
@@ -50,14 +48,42 @@
         <Grid Grid.Row="0" Background="DarkSeaGreen">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="inputBox" Grid.Column="0" Margin="5" FontSize="18" Text="{Binding Input}"/>
-            <Button Grid.Column="1" Margin="6" Content="ADD" Command="{Binding AddCommand}"/>
+            <TextBox Name="inputBox" Grid.Column="0" Margin="5" FontSize="18" Text="{Binding InputMessage}"/>
+            <Button Grid.Column="1" Margin="2" Content="ADD" Command="{Binding AddCommand}" Cursor="Hand">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="#C0C0C0" Offset="0"/>
+                                    <GradientStop Color="#00BFFF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="1" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
 
         <DockPanel Grid.Row="1" Margin="1">
-            <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Path=Records, Mode=OneWay}" />
+            <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Path=Records, Mode=OneWay}" >
+                <ItemsControl.Template>
+                    <ControlTemplate TargetType="ItemsControl">
+                        <ScrollViewer>
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+            </ItemsControl>
         </DockPanel>
     </Grid>
 </Window>

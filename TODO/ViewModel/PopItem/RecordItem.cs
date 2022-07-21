@@ -9,19 +9,17 @@ namespace TODO.ViewModel.PopItem
 
     public class RecordItem : BaseViewModel
     {
-        private string _msg;
-        public string msg
-        {
-            get => _msg;
-            set { _msg = value; NotifyPropertyChanged("msg"); }
-        }
+        /// <summary>
+        /// 待办信息
+        /// </summary>
+        private string mMessage;
+        public string Message { get => mMessage; set => UpdateProperty(ref mMessage, value); }
 
-        private DateTime _datetime;
-        public DateTime datetime
-        {
-            get => _datetime;
-            set { _datetime = value; NotifyPropertyChanged("datetime"); }
-        }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        private string mCreateTime;
+        public string CreateTime { get => mCreateTime; set => UpdateProperty(ref mCreateTime, value); }
 
     }
 }

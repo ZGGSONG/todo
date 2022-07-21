@@ -17,5 +17,13 @@ namespace TODO.ViewModel
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected void UpdateProperty<T>(ref T properValue, T newValue, [CallerMemberName] string properName = "")
+        {
+            if (object.Equals(properValue, newValue))
+                return;
+            properValue = newValue;
+            NotifyPropertyChanged(properName);
+        }
     }
 }

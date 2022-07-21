@@ -15,6 +15,14 @@ namespace TODO.ViewModel
         public static MainViewModel Instance { get => mInstance; }
         public MainViewModel()
         {
+            Initial();
+        }
+
+        /// <summary>
+        /// 初始化，方便做数据恢复不同的构造函数调用
+        /// </summary>
+        private void Initial()
+        {
             AddCommand = new Command.RelayCommand((_) =>
             {
                 return true;
@@ -22,11 +30,11 @@ namespace TODO.ViewModel
             {
                 var record = new RecordItem()
                 {
-                    msg = Input,
-                    datetime = DateTime.Now
+                    Message = InputMessage,
+                    CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 };
                 Records.Insert(0, record);
-                Input = "";
+                InputMessage = "";
             });
 
             DoneCommand = new Command.RelayCommand((_) =>
@@ -38,14 +46,11 @@ namespace TODO.ViewModel
             });
         }
 
-
-
-        private string _Input;
-        public string Input
-        {
-            get { return _Input; }
-            set { _Input = value; NotifyPropertyChanged("Input"); }
-        }
+        /// <summary>
+        /// 输入信息
+        /// </summary>
+        private string mInputMessage;
+        public string InputMessage { get => mInputMessage; set => UpdateProperty(ref mInputMessage, value); }
 
         public BindingList<RecordItem> Records { get; set; } = new BindingList<RecordItem>();
         public ICommand AddCommand { get; private set; }
