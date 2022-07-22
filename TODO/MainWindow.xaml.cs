@@ -36,13 +36,14 @@ namespace TODO
                 this.Top = restoreBounds.Top;
                 this.Width = restoreBounds.Width;
                 this.Height = restoreBounds.Height;
+                this.Topmost = Properties.Settings.Default.MainWindowTopmost;
+                Opacity = Topmost ? 1 : 0.9;
                 //设置窗口状态
                 this.WindowState = Properties.Settings.Default.MainWindowState;
             }
             catch { }
 
             inputBox.Focus();
-            Opacity = 0.9;
             
             if (ViewModelHelper.Instance().MainViewModel is null)
             {
@@ -119,6 +120,7 @@ namespace TODO
             //保存当前位置、大小和状态，到配置文件
             Properties.Settings.Default.MainRestoreBounds = this.RestoreBounds;
             Properties.Settings.Default.MainWindowState = this.WindowState;
+            Properties.Settings.Default.MainWindowTopmost = this.Topmost;
             Properties.Settings.Default.Save();
 
             ViewModelHelper.Instance().Dispose();

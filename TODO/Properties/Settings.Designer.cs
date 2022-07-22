@@ -46,5 +46,17 @@ namespace TODO.Properties {
                 this["MainWindowState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MainWindowTopmost {
+            get {
+                return ((bool)(this["MainWindowTopmost"]));
+            }
+            set {
+                this["MainWindowTopmost"] = value;
+            }
+        }
     }
 }
