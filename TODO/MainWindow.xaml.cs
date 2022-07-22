@@ -24,9 +24,16 @@ namespace TODO
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = MainViewModel.Instance;
             inputBox.Focus();
             Opacity = 0.9;
+            
+            if (ViewModelHelper.Instance().MainViewModel is null)
+            {
+                DataContext = new MainViewModel();
+                ViewModelHelper.Instance().MainViewModel = (IMainViewModel)DataContext;
+                return;
+            }
+            DataContext = ViewModelHelper.Instance().MainViewModel;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -47,6 +54,12 @@ namespace TODO
             {
                 WindowState = WindowState.Minimized;
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Console.WriteLine("退出");
+            ViewModelHelper.Instance().Dispose();
         }
     }
 }

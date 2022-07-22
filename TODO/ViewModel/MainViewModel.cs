@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -9,10 +10,19 @@ using TODO.ViewModel.PopItem;
 
 namespace TODO.ViewModel
 {
+    [Serializable]
     public class MainViewModel : BaseViewModel
-    {
-        private static MainViewModel mInstance = new MainViewModel();
-        public static MainViewModel Instance { get => mInstance; }
+    { 
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            base.GetObjectData(info, context);
+            info.AddValue(nameof(Records), Records);
+        }
+        public MainViewModel(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+            Records = (BindingList<RecordItem>)info.GetValue(nameof(Records), typeof(BindingList<RecordItem>));
+            Initial();
+        }
         public MainViewModel()
         {
             Initial();

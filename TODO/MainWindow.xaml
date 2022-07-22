@@ -7,7 +7,8 @@
         xmlns:popItem="clr-namespace:TODO.ViewModel.PopItem"
         xmlns:vm="clr-namespace:TODO.ViewModel"
         mc:Ignorable="d" Height="420" Width="350"
-        WindowStyle="None" AllowsTransparency="True" KeyDown="Window_KeyDown"
+        WindowStyle="None" AllowsTransparency="True"
+        KeyDown="Window_KeyDown" Closing="Window_Closing"
         MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="Resources/todo.ico">
     <Window.Resources>
         <Style TargetType="{x:Type ItemsControl}">

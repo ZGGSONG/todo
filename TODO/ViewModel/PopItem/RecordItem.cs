@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TODO.ViewModel.PopItem
 {
-
+    [Serializable]
     public class RecordItem : BaseViewModel
     {
         /// <summary>
@@ -21,5 +22,21 @@ namespace TODO.ViewModel.PopItem
         private string mCreateTime;
         public string CreateTime { get => mCreateTime; set => UpdateProperty(ref mCreateTime, value); }
 
+
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            base.GetObjectData(info, context);
+            info.AddValue(nameof(Message), Message);
+            info.AddValue(nameof(CreateTime), CreateTime);
+        }
+        public RecordItem(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+            Message = info.GetString(nameof(Message));
+            CreateTime = info.GetString(nameof(CreateTime));
+        }
+        public RecordItem()
+        {
+
+        }
     }
 }
