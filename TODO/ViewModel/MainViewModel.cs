@@ -49,14 +49,10 @@ namespace TODO.ViewModel
                 Records.Insert(0, record);
                 
                 //重置旧记录的索引
-                var xx = 0;
+                var index = 1;
                 Records.ToList().ForEach(x =>
                 {
-                    xx++;
-                    if (xx > 1)
-                    {
-                        x.Index++;
-                    }
+                    x.Index = index++;
                 });
 
                 //清空输入框
