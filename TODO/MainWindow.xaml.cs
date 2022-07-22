@@ -26,6 +26,7 @@ namespace TODO
             InitializeComponent();
 
             //读取配置文件
+            //配置文件位置: C:\\Users\\ksat\\AppData\\Local\\TODO\\TODO.exe_Url_uhqbim33x02tyr0y0ladkknyvv3fe5pw\\1.0.0.0
             //https://blog.csdn.net/qq_43307934/article/details/87971342
             try
             {
