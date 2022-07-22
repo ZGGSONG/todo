@@ -16,10 +16,16 @@
                 <DataTemplate DataType="{x:Type popItem:RecordItem}">
                     <Grid HorizontalAlignment="Stretch" Margin="0, 5" MinHeight="40" Height="Auto" Background="#c3d7df">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Margin="5, 0" FontSize="22" Text="{Binding Message}"
+                        <TextBlock Grid.Column="0" Margin="5, 0" FontSize="22"
+                                   VerticalAlignment="Center" TextAlignment="Left">
+                            <Run Text="{Binding Index}"/>
+                            <Run Text="."/>
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" FontSize="22" Text="{Binding Message}"
                                    VerticalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap">
                             <TextBlock.InputBindings>
                                 <MouseBinding MouseAction="LeftDoubleClick"
@@ -32,7 +38,7 @@
                                 </ToolTip>
                             </TextBlock.ToolTip>
                         </TextBlock>
-                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="4" MaxHeight="28" MaxWidth="28" Margin="0, 0, 5, 0" Cursor="Hand">
+                        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1" CornerRadius="4" MaxHeight="28" MaxWidth="28" Margin="0, 0, 5, 0" Cursor="Hand">
                             <Image Source="Resources/done.png">
                                 <Image.InputBindings>
                                     <MouseBinding Gesture="LeftClick" Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.DoneCommand}" 

@@ -11,6 +11,12 @@ namespace TODO.ViewModel.PopItem
     public class RecordItem : BaseViewModel
     {
         /// <summary>
+        /// 索引
+        /// </summary>
+        private int mIndex;
+        public int Index { get => mIndex; set => UpdateProperty(ref mIndex, value); }
+
+        /// <summary>
         /// 待办信息
         /// </summary>
         private string mMessage;

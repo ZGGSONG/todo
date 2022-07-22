@@ -39,12 +39,27 @@ namespace TODO.ViewModel
                 return string.IsNullOrEmpty(InputMessage) ? false : true;
             }, (_) =>
             {
+                var count = Records.Count();
                 var record = new RecordItem()
                 {
+                    Index = 1,
                     Message = InputMessage,
                     CreateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 };
                 Records.Insert(0, record);
+                
+                //重置旧记录的索引
+                var xx = 0;
+                Records.ToList().ForEach(x =>
+                {
+                    xx++;
+                    if (xx > 1)
+                    {
+                        x.Index++;
+                    }
+                });
+
+                //清空输入框
                 InputMessage = "";
             });
 
@@ -53,7 +68,16 @@ namespace TODO.ViewModel
                 return true;
             }, (mm) =>
             {
+                var pIndex = (mm as RecordItem).Index;
                 Records.Remove((RecordItem)mm);
+                Records.ToList().ForEach(x =>
+                {
+                    if (x.Index > pIndex)
+                    {
+                        x.Index--;
+                    }
+                });
+
             });
 
             ClearCommand = new Command.RelayCommand((_) => true, (_) =>
