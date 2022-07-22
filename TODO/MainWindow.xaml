@@ -56,16 +56,21 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock Text="-" FontSize="100" FontFamily="楷体" Margin="0,7,0,0"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="-" FontSize="100" FontFamily="楷体" Margin="0,7,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
-            <TextBox Name="inputBox" Background="#cfdae0" Grid.Column="0" Margin="3, 0" FontSize="18" MinHeight="35" VerticalContentAlignment="Center" BorderBrush="#f5f5f5" VerticalAlignment="Center" Text="{Binding InputMessage}"/>
-            <Button Grid.Column="1" Margin="0" Content="+" MaxHeight="40" MaxWidth="60" FontSize="30" Command="{Binding AddCommand}" Cursor="Hand">
+            <!--输入框-->
+            <TextBox Name="inputBox" Background="#cfdae0" Grid.Column="0" Margin="3, 0" FontSize="18" MinHeight="35" VerticalContentAlignment="Center"
+                     BorderBrush="#f5f5f5" VerticalAlignment="Center" Text="{Binding InputMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding AddCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <Button Grid.Column="1" Margin="0" Content="+" MaxHeight="40" MaxWidth="60" FontSize="30" Cursor="Hand" Command="{Binding AddCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">

@@ -54,6 +54,11 @@ namespace TODO
             {
                 WindowState = WindowState.Minimized;
             }
+            //退出
+            if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.Q)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

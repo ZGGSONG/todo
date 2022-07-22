@@ -35,7 +35,7 @@ namespace TODO.ViewModel
         {
             AddCommand = new Command.RelayCommand((_) =>
             {
-                return true;
+                return string.IsNullOrEmpty(InputMessage) ? false : true;
             }, (_) =>
             {
                 var record = new RecordItem()
