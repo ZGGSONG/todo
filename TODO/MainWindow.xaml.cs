@@ -36,10 +36,16 @@ namespace TODO
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            //是否置顶
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.T)
             {
                 Topmost = Topmost == true ? false : true;
                 Opacity = Topmost == true ? 1 : 0.9;
+            }
+            //最小化
+            if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.M)
+            {
+                WindowState = WindowState.Minimized;
             }
         }
     }
