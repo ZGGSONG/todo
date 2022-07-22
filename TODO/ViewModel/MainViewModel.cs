@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TODO.ViewModel.PopItem;
 
@@ -54,6 +55,16 @@ namespace TODO.ViewModel
             {
                 Records.Remove((RecordItem)mm);
             });
+
+            ClearCommand = new Command.RelayCommand((_) => true, (_) =>
+             {
+                 Records.Clear();
+             });
+
+            CopyCommand = new Command.RelayCommand((_) => true, (x) =>
+             {
+                 Clipboard.SetDataObject(x ?? "");
+             });
         }
 
         /// <summary>
@@ -65,5 +76,7 @@ namespace TODO.ViewModel
         public BindingList<RecordItem> Records { get; set; } = new BindingList<RecordItem>();
         public ICommand AddCommand { get; private set; }
         public ICommand DoneCommand { get; private set; }
+        public ICommand ClearCommand { get; private set; }
+        public ICommand CopyCommand { get; private set; }
     }
 }
