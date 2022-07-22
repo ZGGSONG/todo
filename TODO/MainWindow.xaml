@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TODO" WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:TODO"
         xmlns:popItem="clr-namespace:TODO.ViewModel.PopItem"
         xmlns:vm="clr-namespace:TODO.ViewModel"
         mc:Ignorable="d" Height="420" Width="350" MinHeight="291.67" MinWidth="243"

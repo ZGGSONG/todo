@@ -24,6 +24,23 @@ namespace TODO
         public MainWindow()
         {
             InitializeComponent();
+
+            //读取配置文件
+            //https://blog.csdn.net/qq_43307934/article/details/87971342
+            try
+            {
+                //设置位置、大小
+                Rect restoreBounds = Properties.Settings.Default.MainRestoreBounds;
+                this.WindowState = WindowState.Normal;
+                this.Left = restoreBounds.Left;
+                this.Top = restoreBounds.Top;
+                this.Width = restoreBounds.Width;
+                this.Height = restoreBounds.Height;
+                //设置窗口状态
+                this.WindowState = Properties.Settings.Default.MainWindowState;
+            }
+            catch { }
+
             inputBox.Focus();
             Opacity = 0.9;
             
@@ -99,7 +116,11 @@ namespace TODO
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Console.WriteLine("退出");
+            //保存当前位置、大小和状态，到配置文件
+            Properties.Settings.Default.MainRestoreBounds = this.RestoreBounds;
+            Properties.Settings.Default.MainWindowState = this.WindowState;
+            Properties.Settings.Default.Save();
+
             ViewModelHelper.Instance().Dispose();
         }
     }
