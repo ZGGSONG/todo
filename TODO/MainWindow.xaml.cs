@@ -46,8 +46,10 @@ namespace TODO
 
             inputBox.Focus();
             
+            //是否加载缓存
             if (ViewModelHelper.Instance().MainViewModel is null)
             {
+
                 DataContext = new MainViewModel();
                 ViewModelHelper.Instance().MainViewModel = (IMainViewModel)DataContext;
                 return;
@@ -113,6 +115,14 @@ namespace TODO
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Shift) && e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Alt) && e.Key == Key.C)
             {
                 (DataContext as MainViewModel).ClearCommand.Execute(null);
+            }
+
+            //test
+            //恢复界面大小 Ctrl+I
+            if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.I)
+            {
+                Window win = new RemindWindow();
+                win.ShowDialog();
             }
         }
 
