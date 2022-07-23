@@ -96,7 +96,7 @@ namespace TODO
             //放大 Ctrl+]
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.OemCloseBrackets)
             {
-                if (Width > 500)
+                if (Width > 600)
                 {
                     return;
                 }

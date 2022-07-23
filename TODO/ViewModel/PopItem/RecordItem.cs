@@ -32,11 +32,13 @@ namespace TODO.ViewModel.PopItem
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             base.GetObjectData(info, context);
+            info.AddValue(nameof(Index), Index);
             info.AddValue(nameof(Message), Message);
             info.AddValue(nameof(CreateTime), CreateTime);
         }
         public RecordItem(SerializationInfo info, StreamingContext context) : base(info, context)
         {
+            Index = info.GetInt32(nameof(Index));
             Message = info.GetString(nameof(Message));
             CreateTime = info.GetString(nameof(CreateTime));
         }
