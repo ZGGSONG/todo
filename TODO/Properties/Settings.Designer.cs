@@ -25,7 +25,7 @@ namespace TODO.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("600,400,350,420")]
+        [global::System.Configuration.DefaultSettingValueAttribute("785,130,350,420")]
         public global::System.Windows.Rect MainRestoreBounds {
             get {
                 return ((global::System.Windows.Rect)(this["MainRestoreBounds"]));

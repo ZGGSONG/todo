@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,7 @@ namespace TODO
         public MainWindow()
         {
             InitializeComponent();
+            ViewModelHelper.Instance().Context = SynchronizationContext.Current;
 
             //读取配置文件
             //配置文件位置: C:\\Users\\ksat\\AppData\\Local\\TODO\\TODO.exe_Url_uhqbim33x02tyr0y0ladkknyvv3fe5pw\\1.0.0.0
@@ -52,6 +54,17 @@ namespace TODO
 
                 DataContext = new MainViewModel();
                 ViewModelHelper.Instance().MainViewModel = (IMainViewModel)DataContext;
+                //第一次加载提示框
+                Task.Run(() =>
+                {
+                    ViewModelHelper.Instance().UpdateUI(async () =>
+                    {
+                        var aa = new RemindWindow();
+                        aa.Show();
+                        await Task.Delay(3000);
+                        aa.Close();
+                    });
+                });
                 return;
             }
             DataContext = ViewModelHelper.Instance().MainViewModel;

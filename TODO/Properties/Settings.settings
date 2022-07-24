@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MainRestoreBounds" Type="System.Windows.Rect" Scope="User">
-      <Value Profile="(Default)">600,400,350,420</Value>
+      <Value Profile="(Default)">785,130,350,420</Value>
     </Setting>
     <Setting Name="MainWindowState" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TODO.Helper;
 
@@ -70,7 +72,15 @@ namespace TODO.ViewModel
 
 
         public IMainViewModel MainViewModel;
+
+        public SynchronizationContext Context;
+
+        public void UpdateUI(Action action)
+        {
+            Context?.Post((state) => action(), null);
+        }
     }
+
 
     public interface IMainViewModel
     {
