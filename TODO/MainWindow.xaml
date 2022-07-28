@@ -134,18 +134,23 @@
                     </Button.Template>
                 </Button>
             </Grid>
-
-            <DockPanel Grid.Row="2" Margin="1">
-                <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Path=Records, Mode=OneWay}" >
-                    <ItemsControl.Template>
-                        <ControlTemplate TargetType="ItemsControl">
-                            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-                                <ItemsPresenter/>
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                </ItemsControl>
-            </DockPanel>
+            <Grid Grid.Row="2" Margin="1">
+                <Grid x:Name="RemindGrid" Visibility="Hidden">
+                    <TextBlock Text="Ctrl + I 查看更多" Foreground="Gray" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <DockPanel>
+                    <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Path=Records, Mode=OneWay}" >
+                        <ItemsControl.Template>
+                            <ControlTemplate TargetType="ItemsControl">
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                    </ItemsControl>
+                </DockPanel>
+            </Grid>
+            
         </Grid>
     </Border>
 </Window>

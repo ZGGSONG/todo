@@ -59,10 +59,14 @@ namespace TODO
                 {
                     ViewModelHelper.Instance().UpdateUI(async () =>
                     {
-                        var aa = new RemindWindow();
-                        aa.Show();
-                        await Task.Delay(3000);
-                        aa.Close();
+                        this.RemindGrid.Visibility = Visibility.Visible;
+                        await Task.Delay(4000);
+                        this.RemindGrid.Visibility = Visibility.Hidden;
+                        //return;
+                        //var aa = new RemindWindow();
+                        //aa.Show();
+                        //await Task.Delay(3000);
+                        //aa.Close();
                     });
                 });
                 return;
