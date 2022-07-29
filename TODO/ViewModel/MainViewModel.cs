@@ -81,6 +81,20 @@ namespace TODO.ViewModel
                  Records.Clear();
              });
 
+            UpdateCommand = new Command.RelayCommand((_) => true, (mm) =>
+             {
+                 InputMessage = (mm as RecordItem).Message;
+                 var pIndex = (mm as RecordItem).Index;
+                 Records.Remove((RecordItem)mm);
+                 Records.ToList().ForEach(x =>
+                 {
+                     if (x.Index > pIndex)
+                     {
+                         x.Index--;
+                     }
+                 });
+             });
+
             CopyCommand = new Command.RelayCommand((_) => true, (x) =>
              {
                  Clipboard.SetDataObject(x ?? "");
@@ -97,6 +111,7 @@ namespace TODO.ViewModel
         public ICommand AddCommand { get; private set; }
         public ICommand DoneCommand { get; private set; }
         public ICommand ClearCommand { get; private set; }
+        public ICommand UpdateCommand { get; private set; }
         public ICommand CopyCommand { get; private set; }
     }
 }

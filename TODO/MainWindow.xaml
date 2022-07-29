@@ -30,6 +30,9 @@
                             <TextBlock Grid.Column="1" FontSize="22" Text="{Binding Message}" VerticalAlignment="Center" TextAlignment="Left" TextWrapping="Wrap">
                                 <TextBlock.InputBindings>
                                     <MouseBinding MouseAction="LeftDoubleClick"
+                                              Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.UpdateCommand}"
+                                              CommandParameter="{Binding}"/>
+                                    <MouseBinding MouseAction="RightClick"
                                               Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.CopyCommand}"
                                               CommandParameter="{Binding Message}"/>
                                 </TextBlock.InputBindings>
