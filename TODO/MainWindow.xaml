@@ -34,8 +34,10 @@
                                               CommandParameter="{Binding Message}"/>
                                 </TextBlock.InputBindings>
                                 <TextBlock.ToolTip>
-                                    <ToolTip>
-                                        <TextBlock><Run Text="创建时间: "/><Run Text="{Binding CreateTime}"/></TextBlock>
+                                    <ToolTip BorderBrush="{x:Null}" Background="Transparent">
+                                        <Border BorderBrush="Black" Background="#c3d7df" BorderThickness="1" CornerRadius="4">
+                                            <TextBlock Margin="2"><Run Text="创建时间: "/><Run Text="{Binding CreateTime}"/></TextBlock>
+                                        </Border>
                                     </ToolTip>
                                 </TextBlock.ToolTip>
                                 </TextBlock>
