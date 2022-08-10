@@ -9,7 +9,7 @@
         mc:Ignorable="d" Height="420" Width="350" MinHeight="291.67" MinWidth="243"
         WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize"
         KeyDown="Window_KeyDown" Closing="Window_Closing" Background="Transparent"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="Resources/todo.ico">
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" Icon="../Resources/todo.ico">
     <Window.Resources>
         <Style TargetType="{x:Type ItemsControl}">
             <Style.Resources>
@@ -45,7 +45,7 @@
                                 </TextBlock.ToolTip>
                                 </TextBlock>
                             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1" CornerRadius="4" MaxHeight="28" MaxWidth="28" Margin="0, 0, 5, 0" Cursor="Hand">
-                                <Image Source="Resources/done.png">
+                                <Image Source="../Resources/done.png">
                                     <Image.InputBindings>
                                         <MouseBinding Gesture="LeftClick" Command="{Binding RelativeSource={RelativeSource AncestorType=Window},Path=DataContext.DoneCommand}" 
                                                       CommandParameter="{Binding}"/>
